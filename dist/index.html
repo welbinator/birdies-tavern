@@ -136,6 +136,62 @@
   .social svg{fill:#cfd6cf}
   .copy{border-top:1px solid #2a332c;padding-top:20px;text-align:center;font-size:.8rem;color:#879189}
 
+  /* ---------- ANIMATIONS / REVEALS ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.r-left{transform:translateX(-34px)}
+  .reveal.r-right{transform:translateX(34px)}
+  .reveal.r-left.in,.reveal.r-right.in{transform:none}
+  .reveal.r-zoom{transform:scale(.94);opacity:0}
+  .reveal.r-zoom.in{transform:scale(1);opacity:1}
+  /* staggered children */
+  .stagger > *{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,.61,.36,1)}
+  .stagger.in > *{opacity:1;transform:none}
+  .stagger.in > *:nth-child(1){transition-delay:.04s}
+  .stagger.in > *:nth-child(2){transition-delay:.12s}
+  .stagger.in > *:nth-child(3){transition-delay:.20s}
+  .stagger.in > *:nth-child(4){transition-delay:.28s}
+  .stagger.in > *:nth-child(5){transition-delay:.36s}
+  .stagger.in > *:nth-child(6){transition-delay:.44s}
+  /* hero entrance on load */
+  @keyframes heroUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+  .hero .wrap > *{animation:heroUp .8s cubic-bezier(.22,.61,.36,1) both}
+  .hero .eyebrow{animation-delay:.05s}
+  .hero h1{animation-delay:.18s}
+  .hero .tag{animation-delay:.34s}
+  .hero .sub{animation-delay:.46s}
+  .hero .btns{animation-delay:.58s}
+  /* gentle floating flag + pulsing eyebrow dot */
+  @keyframes floaty{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-14px) rotate(1deg)}}
+  .hero-flag{animation:floaty 7s ease-in-out infinite}
+  @keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.35}}
+  .eyebrow{animation:pulseDot 2.4s ease-in-out infinite}
+  /* info strip items slide in */
+  .strip span{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+  .strip.in span{opacity:1;transform:none}
+  .strip.in span:nth-child(2){transition-delay:.08s}
+  .strip.in span:nth-child(3){transition-delay:.16s}
+  .strip.in span:nth-child(4){transition-delay:.24s}
+  .strip.in span:nth-child(5){transition-delay:.32s}
+  /* button + card micro-interactions */
+  .btn{will-change:transform}
+  .btn:active{transform:translateY(0) scale(.98)}
+  .mcard,.vcard,.scorecard{transition:transform .25s ease,box-shadow .25s ease}
+  .mcard:hover{transform:translateY(-4px)}
+  .vcard:hover,.scorecard:hover{transform:translateY(-5px);box-shadow:0 22px 46px rgba(0,0,0,.14)}
+  .pill{transition:transform .18s ease,background .18s ease,color .18s ease}
+  .pill:hover{transform:translateY(-2px);background:var(--brass);color:var(--fairway)}
+  .item{transition:background .2s ease,padding-left .2s ease}
+  .item:hover{background:rgba(201,154,63,.08);padding-left:8px}
+  nav a{transition:color .18s ease,opacity .18s ease}
+  .social a svg{transition:fill .15s ease}
+
+  @media(prefers-reduced-motion:reduce){
+    .reveal,.stagger > *,.strip span{opacity:1 !important;transform:none !important;transition:none !important}
+    .hero .wrap > *,.hero-flag,.eyebrow{animation:none !important}
+    .mcard:hover,.vcard:hover,.scorecard:hover,.pill:hover,.item:hover,.btn:hover{transform:none !important}
+  }
+
   @media(max-width:860px){
     .about .grid,.visit .grid,.menu-grid,footer .grid{grid-template-columns:1fr}
     nav ul{display:none}
@@ -383,5 +439,68 @@
   </div>
 </footer>
 
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Auto-tag elements for scroll reveals (keeps markup clean)
+  function tag(sel, cls){
+    document.querySelectorAll(sel).forEach(function(el){
+      el.classList.add('reveal');
+      if(cls) el.classList.add(cls);
+    });
+  }
+  // Section headers rise up
+  tag('.shead');
+  // About: text from left, scorecard zooms in
+  var aboutGrid = document.querySelector('.about .grid > div:first-child'); if(aboutGrid){aboutGrid.classList.add('reveal','r-left');}
+  var sc = document.querySelector('.scorecard'); if(sc){sc.classList.add('reveal','r-right');}
+  // Order band content
+  tag('.order .wrap', 'r-zoom');
+  // Visit cards slide from sides
+  var vcards = document.querySelectorAll('.visit .grid .vcard');
+  if(vcards[0]) vcards[0].classList.add('reveal','r-left');
+  if(vcards[1]) vcards[1].classList.add('reveal','r-right');
+  // Footer columns
+  tag('footer .grid');
+
+  // Staggered groups
+  ['.menu-grid','.pills','.about .pills','footer .grid'].forEach(function(s){
+    document.querySelectorAll(s).forEach(function(el){ el.classList.add('stagger'); });
+  });
+  var sci = document.querySelector('.scorecard'); // reveal score rows one by one
+  // Info strip
+  var strip = document.querySelector('.strip');
+
+  if(reduce){
+    // Make everything visible immediately
+    document.querySelectorAll('.reveal,.stagger').forEach(function(el){el.classList.add('in');});
+    if(strip) strip.classList.add('in');
+    return;
+  }
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.14, rootMargin:'0px 0px -8% 0px'});
+
+  document.querySelectorAll('.reveal,.stagger').forEach(function(el){ io.observe(el); });
+  if(strip) io.observe(strip);
+
+  // Header shadow on scroll
+  var header = document.querySelector('header');
+  var onScroll = function(){
+    if(window.scrollY > 10) header.style.boxShadow = '0 6px 20px rgba(0,0,0,.22)';
+    else header.style.boxShadow = 'none';
+  };
+  header.style.transition = 'box-shadow .25s ease';
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
 </body>
 </html>
