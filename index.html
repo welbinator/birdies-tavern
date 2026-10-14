@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birdie's Tavern + Grill | Ankeny, IA — Good Food. Cold Drinks. Great Company.</title>
+<meta name="description" content="Birdie's Tavern + Grill in Ankeny, Iowa — your neighborhood grill with a golf swing mixed in. Smashed burgers, wings, Brussels sprouts & cold drinks. 1975 N Ankeny Blvd.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --fairway:#0f3d2e;      /* deep green */
+    --fairway-2:#164c38;
+    --cream:#f5efe1;        /* clubhouse cream */
+    --sand:#e7dcc3;
+    --brass:#c99a3f;        /* gold / brass */
+    --flag:#c0392b;         /* flag red */
+    --ink:#17201b;
+    --muted:#5c6b61;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Inter",system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
+  h1,h2,h3,.display{font-family:"Anton",sans-serif;font-weight:400;letter-spacing:.5px;line-height:.98;text-transform:uppercase}
+  .serif{font-family:"Fraunces",serif}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+  .accent{color:var(--brass)}
+
+  /* ---------- HEADER ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(15,61,46,.97);backdrop-filter:blur(6px);border-bottom:2px solid var(--brass)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:11px;color:var(--cream)}
+  .brand .mark{width:38px;height:38px;flex:0 0 38px}
+  .brand .name{font-family:"Anton";font-size:1.35rem;color:var(--cream);letter-spacing:.5px}
+  .brand .name b{color:var(--brass);font-weight:400}
+  nav ul{display:flex;gap:26px;list-style:none;align-items:center}
+  nav a{color:var(--cream);font-weight:600;font-size:.84rem;text-transform:uppercase;letter-spacing:.8px;opacity:.9}
+  nav a:hover{color:var(--brass);opacity:1}
+  .nav-cta{background:var(--flag);color:#fff !important;padding:9px 16px;border-radius:3px;opacity:1 !important}
+  .burger{display:none;background:none;border:0;color:var(--cream);font-size:1.6rem;cursor:pointer}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;background:
+      linear-gradient(rgba(10,40,29,.80),rgba(10,40,29,.86)),
+      repeating-linear-gradient(135deg,#12462f 0 42px,#0f3d2e 42px 84px);
+      color:var(--cream);overflow:hidden}
+  .hero .wrap{padding-top:78px;padding-bottom:84px;position:relative;z-index:2}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-weight:700;letter-spacing:2.5px;font-size:.72rem;text-transform:uppercase;color:var(--brass);border:1px solid rgba(201,154,63,.5);padding:7px 14px;border-radius:40px;margin-bottom:22px}
+  .hero h1{font-size:clamp(2.9rem,8vw,5.6rem);color:var(--cream);max-width:14ch}
+  .hero h1 .accent{display:block}
+  .hero .tag{font-family:"Fraunces";font-style:italic;font-size:clamp(1.15rem,2.6vw,1.6rem);margin:20px 0 8px;color:var(--sand);max-width:30ch}
+  .hero .sub{font-size:1rem;color:#d9d2c0;max-width:46ch;margin-bottom:30px}
+  .btns{display:flex;flex-wrap:wrap;gap:14px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:3px;font-weight:700;letter-spacing:.5px;font-size:.95rem;transition:transform .12s, box-shadow .12s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--flag);color:#fff}
+  .btn-ghost{background:transparent;color:var(--cream);border:1.5px solid var(--brass)}
+  .btn-ghost:hover{background:var(--brass);color:var(--fairway)}
+  .hero-flag{position:absolute;right:-40px;bottom:-30px;width:min(430px,42vw);opacity:.16;z-index:1}
+
+  /* info strip */
+  .strip{background:var(--brass);color:var(--fairway)}
+  .strip .wrap{display:flex;flex-wrap:wrap;gap:8px 34px;justify-content:center;padding:14px 22px;font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:1px}
+  .strip span{display:inline-flex;align-items:center;gap:8px}
+
+  /* ---------- SECTION base ---------- */
+  section{padding:76px 0}
+  .shead{text-align:center;margin-bottom:46px}
+  .shead .kick{color:var(--flag);font-weight:700;letter-spacing:3px;text-transform:uppercase;font-size:.75rem;margin-bottom:12px}
+  .shead h2{font-size:clamp(2rem,5vw,3.1rem);color:var(--fairway)}
+  .shead p{max-width:52ch;margin:14px auto 0;color:var(--muted);font-size:1.02rem}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--fairway);color:var(--cream)}
+  .about .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center}
+  .about h2{color:var(--cream);font-size:clamp(2rem,5vw,3rem);margin-bottom:18px}
+  .about p{color:#d9d2c0;margin-bottom:16px}
+  .about .pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .pill{border:1px solid rgba(201,154,63,.45);color:var(--brass);padding:8px 15px;border-radius:40px;font-size:.8rem;font-weight:600}
+  .scorecard{background:var(--cream);color:var(--ink);border-radius:8px;padding:26px;box-shadow:0 18px 40px rgba(0,0,0,.28)}
+  .scorecard h3{color:var(--fairway);font-size:1.2rem;letter-spacing:1px;border-bottom:2px solid var(--sand);padding-bottom:12px;margin-bottom:6px}
+  .score-row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px dashed #d8cfba;font-size:.96rem}
+  .score-row:last-child{border-bottom:0}
+  .score-row b{font-family:"Anton";letter-spacing:.5px;color:var(--fairway)}
+
+  /* ---------- MENU ---------- */
+  .menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:30px 44px}
+  .mcard h3{font-size:1.35rem;color:var(--fairway);display:flex;align-items:center;gap:10px;margin-bottom:4px}
+  .mcard h3::before{content:"";width:26px;height:3px;background:var(--flag);display:inline-block}
+  .mcard .note{color:var(--muted);font-size:.84rem;margin-bottom:16px;font-style:italic;font-family:"Fraunces"}
+  .item{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px dotted #cfc5ad}
+  .item:last-child{border-bottom:0}
+  .item .n{font-weight:600}
+  .item .d{color:var(--muted);font-size:.83rem;font-weight:400;display:block;margin-top:2px}
+  .item .p{font-family:"Anton";color:var(--brass);white-space:nowrap;font-size:1.05rem;padding-top:2px}
+  .menu-note{text-align:center;margin-top:40px;color:var(--muted);font-style:italic;font-family:"Fraunces"}
+
+  /* ---------- ORDER CTA band ---------- */
+  .order{background:
+     linear-gradient(rgba(10,40,29,.9),rgba(10,40,29,.92)),
+     repeating-linear-gradient(135deg,#12462f 0 42px,#0f3d2e 42px 84px);
+     color:var(--cream);text-align:center}
+  .order h2{font-size:clamp(2rem,5vw,3rem);color:var(--cream);margin-bottom:14px}
+  .order p{color:#d9d2c0;max-width:40ch;margin:0 auto 28px}
+
+  /* ---------- VISIT ---------- */
+  .visit .grid{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+  .vcard{background:#fff;border:1px solid var(--sand);border-radius:8px;padding:30px;box-shadow:0 8px 24px rgba(0,0,0,.05)}
+  .vcard h3{color:var(--fairway);font-size:1.3rem;margin-bottom:18px;letter-spacing:1px}
+  .hours-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed #e3dac6}
+  .hours-row:last-child{border-bottom:0}
+  .hours-row.closed{color:var(--flag)}
+  .hours-row b{font-weight:600}
+  .vline{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px}
+  .vline svg{flex:0 0 22px;margin-top:3px}
+  .vline a{font-weight:600;color:var(--fairway)}
+  .vmap{border:0;border-radius:8px;width:100%;height:230px;margin-top:8px;filter:saturate(.9)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:#cfd6cf;padding:52px 0 26px}
+  footer .grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;margin-bottom:34px}
+  footer .name{font-family:"Anton";font-size:1.5rem;color:var(--cream)}
+  footer .name b{color:var(--brass);font-weight:400}
+  footer p{font-size:.9rem;margin-top:12px;color:#a9b2a9;max-width:32ch}
+  footer h4{font-family:"Anton";letter-spacing:1px;color:var(--cream);margin-bottom:14px;font-size:1rem}
+  footer ul{list-style:none}
+  footer li{margin-bottom:9px}
+  footer a{font-size:.9rem;color:#cfd6cf}
+  footer a:hover{color:var(--brass)}
+  .social{display:flex;gap:12px;margin-top:6px}
+  .social a{width:40px;height:40px;border:1px solid #39463c;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.15s}
+  .social a:hover{background:var(--brass);border-color:var(--brass)}
+  .social a:hover svg{fill:var(--ink)}
+  .social svg{fill:#cfd6cf}
+  .copy{border-top:1px solid #2a332c;padding-top:20px;text-align:center;font-size:.8rem;color:#879189}
+
+  @media(max-width:860px){
+    .about .grid,.visit .grid,.menu-grid,footer .grid{grid-template-columns:1fr}
+    nav ul{display:none}
+    .burger{display:block}
+    nav.open ul{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;background:var(--fairway-2);padding:18px 22px;gap:16px;border-bottom:2px solid var(--brass)}
+    section{padding:58px 0}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <svg class="mark" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="32" cy="32" r="31" fill="#f5efe1" stroke="#c99a3f" stroke-width="2"/>
+        <path d="M30 14 L30 40" stroke="#17201b" stroke-width="3" stroke-linecap="round"/>
+        <path d="M30 14 L46 19 L30 24 Z" fill="#c0392b"/>
+        <circle cx="30" cy="46" r="4.5" fill="#0f3d2e"/>
+        <circle cx="21" cy="49" r="2" fill="#0f3d2e"/><circle cx="39" cy="49" r="2" fill="#0f3d2e"/><circle cx="30" cy="52" r="2" fill="#0f3d2e"/>
+      </svg>
+      <span class="name">BIRDIE'S <b>TAVERN+GRILL</b></span>
+    </a>
+    <nav id="nav">
+      <button class="burger" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#visit">Visit</a></li>
+        <li><a class="nav-cta" href="tel:5156086878">Call (515) 608-6878</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <svg class="hero-flag" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M50 8 L50 110" stroke="#f5efe1" stroke-width="3"/>
+    <path d="M50 8 L92 20 L50 32 Z" fill="#c0392b"/>
+    <ellipse cx="50" cy="112" rx="26" ry="7" fill="#f5efe1"/>
+  </svg>
+  <div class="wrap">
+    <span class="eyebrow">● Now Open in Ankeny, Iowa</span>
+    <h1>Good Food.<span class="accent">Cold Drinks.</span>Great Company.</h1>
+    <p class="tag">Your neighborhood grill with a golf swing mixed in.</p>
+    <p class="sub">Hand-smashed burgers, saucy wings, and those famous hot-honey Brussels sprouts — served up fresh in the heart of Ankeny.</p>
+    <div class="btns">
+      <a class="btn btn-primary" href="#menu">View the Menu</a>
+      <a class="btn btn-ghost" href="#visit">Find Us &amp; Hours</a>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="wrap">
+    <span>🍔 Smash Burgers</span>
+    <span>🔥 Wings 5 Ways</span>
+    <span>🥬 Hot-Honey Brussels</span>
+    <span>⛳ Golf-Themed Favorites</span>
+    <span>★ 4.7 Guest Rating</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap grid">
+    <div>
+      <div class="shead" style="text-align:left;margin-bottom:0">
+        <div class="kick" style="color:var(--brass)">On The Tee</div>
+        <h2>Ankeny's Newest Clubhouse Grill</h2>
+      </div>
+      <p>Birdie's Tavern + Grill opened its doors in October 2025 — bringing Ankeny a laid-back spot where the food is made with real care and nobody takes themselves too seriously. Think a neighborhood grill with a golf swing mixed into it.</p>
+      <p>Every burger is hand-smashed to order, the wings come five ways, and regulars swear by the hot-honey Brussels sprouts. Whether you're grabbing lunch after a round, catching the game at the bar, or bringing the family in for dinner, you'll get good food, cold drinks, and great company every time.</p>
+      <div class="pills">
+        <span class="pill">Family Friendly</span>
+        <span class="pill">Full Bar</span>
+        <span class="pill">Dine In &amp; Carryout</span>
+        <span class="pill">Locally Owned</span>
+      </div>
+    </div>
+    <div class="scorecard">
+      <h3>The Scorecard</h3>
+      <div class="score-row"><span>Signature Burger</span> <b>Jack's Burger</b></div>
+      <div class="score-row"><span>Fan Favorite</span> <b>Hot-Honey Brussels</b></div>
+      <div class="score-row"><span>Wing Sauces</span> <b>5 Styles</b></div>
+      <div class="score-row"><span>Guest Rating</span> <b>★ 4.7</b></div>
+      <div class="score-row"><span>Est.</span> <b>2025 · Ankeny, IA</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="wrap">
+    <div class="shead">
+      <div class="kick">Front Nine &amp; Back Nine</div>
+      <h2>The Menu</h2>
+      <p>A rotating lineup of smashed burgers, wings, and shareables — here are the clubhouse favorites. Prices reflect recent online ordering menus.</p>
+    </div>
+    <div class="menu-grid">
+
+      <div class="mcard">
+        <h3>Smashed Burgers</h3>
+        <div class="note">Quarter-pound smash patties, griddled crispy</div>
+        <div class="item"><span class="n">Jack's Burger<span class="d">Pepper jack, cheese curds, bacon, ranch</span></span><span class="p">$18.00</span></div>
+        <div class="item"><span class="n">Bleu Tee Burger<span class="d">Bacon, bleu cheese, garlic aioli</span></span><span class="p">$16.80</span></div>
+        <div class="item"><span class="n">HotStreak Burger<span class="d">Jalapeños, bacon, cheddar, ranch</span></span><span class="p">$16.80</span></div>
+        <div class="item"><span class="n">On The Fringe Burger<span class="d">Grilled mushroom, caramelized onion, swiss, aioli</span></span><span class="p">$15.60</span></div>
+        <div class="item"><span class="n">BreakfastBall Burger</span><span class="p">$19.20</span></div>
+      </div>
+
+      <div class="mcard">
+        <h3>Wings</h3>
+        <div class="note">Buffalo · BBQ · Garlic Parm · Hot Honey · Nashville Hot</div>
+        <div class="item"><span class="n">Traditional Wings<span class="d">Bone-in, choice of sauce + dipping sauce</span></span><span class="p">$17.99</span></div>
+        <div class="item"><span class="n">Boneless Wings</span><span class="p">$15.60</span></div>
+        <div class="item"><span class="n">Cauliflower Wings<span class="d">Crispy, choice of sauce</span></span><span class="p">$14.40</span></div>
+      </div>
+
+      <div class="mcard">
+        <h3>Appetizers</h3>
+        <div class="note">Made to share (or not)</div>
+        <div class="item"><span class="n">Brussel Sprouts<span class="d">Hot honey, bacon, pecorino</span></span><span class="p">$9.60</span></div>
+        <div class="item"><span class="n">Philly Fries</span><span class="p">$18.00</span></div>
+        <div class="item"><span class="n">Chicken Tendies</span><span class="p">$14.40</span></div>
+        <div class="item"><span class="n">Falafel Bites</span><span class="p">$14.40</span></div>
+      </div>
+
+      <div class="mcard">
+        <h3>Greens</h3>
+        <div class="note">Yes, there's a Green Jacket on the menu</div>
+        <div class="item"><span class="n">Green Jacket Salad<span class="d">Cranberries, candied pecans, feta, champagne vinaigrette</span></span><span class="p">$14.40</span></div>
+        <div class="item"><span class="n">Wedge Salad<span class="d">Iceberg, bleu cheese, tomato, bacon, egg, croutons</span></span><span class="p">$9.60</span></div>
+        <div class="item"><span class="n">Pesto Chicken Salad</span><span class="p">$14.40</span></div>
+        <div class="item"><span class="n">Buffalo Chicken Salad</span><span class="p">$14.40</span></div>
+      </div>
+
+      <div class="mcard">
+        <h3>Sandwiches &amp; Wraps</h3>
+        <div class="note">The clubhouse turn</div>
+        <div class="item"><span class="n">Steak Melt<span class="d">Shaved steak, swiss, roasted garlic aioli, red peppers</span></span><span class="p">$20.40</span></div>
+        <div class="item"><span class="n">Chicken Sandwedge<span class="d">Grilled or breaded, lettuce, tomato, onion, pickle</span></span><span class="p">$16.80</span></div>
+        <div class="item"><span class="n">Buffalo Chicken Sandwedge</span><span class="p">$16.80</span></div>
+      </div>
+
+      <div class="mcard">
+        <h3>More on the Course</h3>
+        <div class="note">Something for the whole foursome</div>
+        <div class="item"><span class="n">Mac + Cheese</span><span class="p">Ask</span></div>
+        <div class="item"><span class="n">Tacos</span><span class="p">Ask</span></div>
+        <div class="item"><span class="n">Bowls</span><span class="p">Ask</span></div>
+        <div class="item"><span class="n">Kids Menu</span><span class="p">Ask</span></div>
+      </div>
+
+    </div>
+    <p class="menu-note">Menu &amp; prices change seasonally — call (515) 608-6878 for today's full lineup and specials.</p>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section class="order">
+  <div class="wrap">
+    <h2>Hungry? Let's Fix That.</h2>
+    <p>Dine in at the bar, grab it to go, or get it delivered to your door.</p>
+    <div class="btns" style="justify-content:center">
+      <a class="btn btn-primary" href="https://www.doordash.com/store/birdies-ankeny-36935739" target="_blank" rel="noopener">Order on DoorDash</a>
+      <a class="btn btn-ghost" href="https://www.ubereats.com/store/birdies-tavern-n-ankeny-blvd/cfHooYCoX5aMpx-wiA5i5A" target="_blank" rel="noopener">Order on Uber Eats</a>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="shead">
+      <div class="kick">Make The Turn</div>
+      <h2>Find Us</h2>
+      <p>Right by Aldi on North Ankeny Blvd — stop in for lunch, dinner, or a drink at the bar.</p>
+    </div>
+    <div class="grid">
+      <div class="vcard">
+        <h3>Hours</h3>
+        <div class="hours-row closed"><b>Monday</b><span>Closed</span></div>
+        <div class="hours-row"><b>Tuesday – Thursday</b><span>11am – 9pm</span></div>
+        <div class="hours-row"><b>Friday – Saturday</b><span>11am – 10pm</span></div>
+        <div class="hours-row"><b>Sunday</b><span>11am – 8pm</span></div>
+        <p style="margin-top:16px;color:var(--muted);font-size:.88rem;font-style:italic;font-family:'Fraunces'">Kitchen hours may vary on holidays — give us a call to confirm.</p>
+      </div>
+      <div class="vcard">
+        <h3>Location &amp; Contact</h3>
+        <div class="vline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><a href="https://www.google.com/maps/search/?api=1&query=Birdies+Tavern+Grill+1975+N+Ankeny+Blvd+Ankeny+IA" target="_blank" rel="noopener">1975 N Ankeny Blvd, Unit 117<br>Ankeny, IA 50023</a></div>
+        </div>
+        <div class="vline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.4-1.1a2 2 0 012.1-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2z"/></svg>
+          <div><a href="tel:5156086878">(515) 608-6878</a></div>
+        </div>
+        <iframe class="vmap" loading="lazy" title="Map to Birdie's Tavern + Grill"
+          src="https://www.google.com/maps?q=1975+N+Ankeny+Blvd,+Ankeny,+IA+50023&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <div class="name">BIRDIE'S <b>TAVERN + GRILL</b></div>
+        <p>Good food. Cold drinks. Great company. Ankeny's neighborhood grill with a golf swing mixed in.</p>
+        <div class="social">
+          <a href="https://www.facebook.com/birdiestavernandgrill" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M24 12a12 12 0 10-13.9 11.9v-8.4H7v-3.5h3.1V9.4c0-3 1.8-4.7 4.6-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9v2.2h3.4l-.5 3.5h-2.9v8.4A12 12 0 0024 12z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/birdiestavernandgrill" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.3-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.3 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 9.5 2.6 9.9 2.6 13s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.1a4.9 4.9 0 110 9.8 4.9 4.9 0 010-9.8zm0 8a3.1 3.1 0 100-6.2 3.1 3.1 0 000 6.2zm6.3-8.2a1.1 1.1 0 11-2.3 0 1.1 1.1 0 012.3 0z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#visit">Hours &amp; Location</a></li>
+          <li><a href="tel:5156086878">Call Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li>1975 N Ankeny Blvd, Unit 117</li>
+          <li>Ankeny, IA 50023</li>
+          <li><a href="tel:5156086878">(515) 608-6878</a></li>
+          <li>Tue–Sun · Closed Mondays</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">© 2026 Birdie's Tavern + Grill · Ankeny, Iowa · Good food. Cold drinks. Great company.</div>
+  </div>
+</footer>
+
+</body>
+</html>
